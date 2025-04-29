@@ -21,6 +21,10 @@ class GlueCatalogAdapter(ICatalogInterface):
         :param tables_list: List of TableReference objects representing the tables.
         :return: List of TableMetadata objects containing metadata for each table.
         """
+
+        # Tentar chamar método privado para criação de client e session
+        # Passar credenciais no método do contrato (ruim, porém funciona)
+
         table_metadata_list = []
 
         for table_reference in tables_list:

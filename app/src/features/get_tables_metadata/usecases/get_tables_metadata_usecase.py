@@ -38,4 +38,9 @@ class GetTablesMetadataUseCase:
             input_dto.credentials
         )
 
+        self.logger.info("Retrieving table metadata from tables in the list")
+        table_metadata_list = self.__catalog_interface.get_table_metadata(
+            input_dto.tables_list
+        )
+
 
