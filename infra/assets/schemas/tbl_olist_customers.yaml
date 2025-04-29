@@ -1,0 +1,30 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_customers
+table_description: >
+  Contém os dados cadastrais dos clientes da plataforma de e-commerce,
+  incluindo informações de localização (cidade, estado e prefixo do CEP).
+  Essa tabela é utilizada para identificar clientes únicos e para obter o local de entrega de seus pedidos.
+  Cada pedido é associado a um `customer_id`, que é exclusivo por compra.
+  No entanto, o mesmo cliente pode realizar diferentes compras com diferentes `customer_id`.
+  Para contornar essa limitação, a tabela inclui o campo `customer_unique_id`, que permite identificar clientes recorrentes e realizar análises de comportamento de recompra.
+
+table_columns:
+  - name: customer_id
+    type: string
+    comment: Identificador exclusivo do cliente no contexto de um pedido. Esse valor é reatribuído a cada nova compra, mesmo para o mesmo cliente. Utilizado como chave para relacionar pedidos à localização de entrega no momento da compra.
+
+  - name: customer_unique_id
+    type: string
+    comment: Identificador persistente do cliente ao longo do tempo. Permite a identificação de clientes recorrentes e a análise do comportamento de recompra. Este valor permanece o mesmo independentemente da quantidade de pedidos realizados pelo cliente.
+
+  - name: customer_zip_code_prefix
+    type: string
+    comment: Prefixo do código postal (CEP) associado ao endereço de entrega do cliente. Usado para regionalizações e análises logísticas. Representa apenas os cinco primeiros dígitos do CEP brasileiro.
+
+  - name: customer_city
+    type: string
+    comment: Nome da cidade onde está localizado o endereço de entrega do cliente. Pode ser utilizado em análises demográficas ou de segmentação regional.
+
+  - name: customer_state
+    type: string
+    comment: Sigla do estado (UF) correspondente ao endereço de entrega do cliente. Segue o padrão de dois caracteres utilizado no Brasil (ex SP, RJ, MG).

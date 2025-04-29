@@ -1,0 +1,42 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_products
+table_description: >
+  Contém os detalhes dos produtos disponíveis na plataforma de e-commerce. Cada linha representa um produto
+  individual, com informações sobre categoria, características físicas e informações relacionadas ao transporte e armazenamento.
+
+table_columns:
+  - name: product_id
+    type: string
+    comment: Identificador único do produto. Chave primária da tabela, usada para relacionar com outras tabelas, como pedidos, avaliações e estoques.
+
+  - name: product_category_name
+    type: string
+    comment: Nome da categoria do produto. Essencial para análises de desempenho por categoria e segmentação de mercado.
+
+  - name: product_name_lenght
+    type: integer
+    comment: Número de caracteres do nome do produto. Pode ser utilizado para otimização de layout de interfaces e análise de impacto de nomes de produtos longos.
+
+  - name: product_description_lenght
+    type: integer
+    comment: Número de caracteres da descrição do produto. Pode ser analisado para entender o impacto das descrições longas na conversão e satisfação do cliente.
+
+  - name: product_photos_qty
+    type: integer
+    comment: Quantidade de fotos associadas ao produto. Indicador da qualidade do cadastro de produtos, já que mais fotos geralmente aumentam as taxas de conversão.
+
+  - name: product_weight_g
+    type: integer
+    comment: Peso do produto em gramas. Utilizado para cálculo de custos de frete e otimização de logística de envio.
+
+  - name: product_length_cm
+    type: integer
+    comment: Comprimento do produto em centímetros. Importante para análise de dimensões físicas e otimização do espaço no estoque e no transporte.
+
+  - name: product_height_cm
+    type: integer
+    comment: Altura do produto em centímetros. Usado para otimização do armazenamento e análise de volume de produto.
+
+  - name: product_width_cm
+    type: integer
+    comment: Largura do produto em centímetros. Essencial para análise de volume e logística, assim como para cálculo de custos de envio baseados em volume.

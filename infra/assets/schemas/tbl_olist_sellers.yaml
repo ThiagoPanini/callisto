@@ -1,0 +1,22 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_sellers
+table_description: >
+  Contém os dados dos vendedores da plataforma de e-commerce.
+  Cada linha representa um vendedor com informações sobre sua localização geográfica.
+
+table_columns:
+  - name: seller_id
+    type: string
+    comment: Identificador único do vendedor. Chave primária da tabela, usada para associar os vendedores com os produtos, pedidos e avaliações.
+
+  - name: seller_zip_code_prefix
+    type: string
+    comment: Prefixo do CEP do vendedor. Usado para análise de localização geográfica e segmentação de mercado, permitindo determinar a proximidade dos vendedores em relação aos centros de consumo.
+
+  - name: seller_city
+    type: string
+    comment: Cidade do vendedor. Essencial para análise de distribuição regional de vendedores e estratégias de marketing direcionado.
+
+  - name: seller_state
+    type: string
+    comment: Estado do vendedor. Importante para análise regional, otimização de logística e para entender as diferenças nas vendas por estado.

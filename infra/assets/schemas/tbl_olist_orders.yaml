@@ -1,0 +1,40 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_orders
+table_description: >
+  Contém os registros dos pedidos realizados na plataforma. Cada linha representa um pedido único
+  feito por um cliente, e inclui informações sobre o status do pedido, datas de aprovação, envio,
+  entrega e previsão de entrega. Esta tabela é o ponto central para análises de comportamento de compra,
+  performance logística e atendimento ao cliente.
+
+table_columns:
+  - name: order_id
+    type: string
+    comment: Identificador único do pedido. Chave primária da tabela. Permite relacionamento com outras tabelas, como clientes, itens, pagamentos e avaliações.
+
+  - name: customer_id
+    type: string
+    comment: Identificador único do cliente que realizou o pedido. Pode ser utilizado para análises de comportamento do consumidor e frequência de compras.
+
+  - name: order_status
+    type: string
+    comment: "Status atual do pedido. Possíveis valores incluem: 'created', 'approved', 'invoiced', 'shipped', 'delivered', 'canceled', 'unavailable'. Essencial para monitoramento da jornada do pedido e para indicadores de performance operacional."
+
+  - name: order_purchase_timestamp
+    type: timestamp
+    comment: Data e hora em que o pedido foi realizado pelo cliente. Serve como ponto inicial do ciclo de vida do pedido e é crucial para análises de sazonalidade.
+
+  - name: order_approved_at
+    type: timestamp
+    comment: Data e hora em que o pagamento foi aprovado. Ajuda a medir o tempo entre a compra e a aprovação, relevante para otimização de checkout e antifraude.
+
+  - name: order_delivered_carrier_date
+    type: timestamp
+    comment: Data e hora em que o pedido foi despachado para a transportadora. Utilizado para calcular o tempo de processamento logístico interno.
+
+  - name: order_delivered_customer_date
+    type: timestamp
+    comment: Data e hora em que o pedido foi entregue ao cliente. Importante para cálculo de SLA de entrega e para medir o cumprimento de prazos.
+
+  - name: order_estimated_delivery_date
+    type: date
+    comment: Data estimada de entrega informada ao cliente no momento da compra. Comparada com a data real de entrega para calcular atrasos ou antecipações logísticas.

@@ -1,0 +1,20 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_order_payments
+table_description: >
+  Contém os registros de pagamentos associados a pedidos realizados na plataforma.
+  Cada linha representa uma parcela de pagamento ou forma de pagamento utilizada em um pedido.
+  A tabela permite análises detalhadas sobre o comportamento de pagamento dos clientes, incluindo o tipo de meio utilizado, parcelamento e valor transacionado.
+  Pode haver múltiplas linhas para um mesmo pedido caso o cliente tenha utilizado mais de uma forma de pagamento.
+
+table_columns:
+  - name: order_id
+    type: string
+    comment: Identificador único do pedido ao qual o pagamento está associado. Usado como chave para junções com outras tabelas do domínio de pedidos.
+
+  - name: payment_sequential
+    type: int
+    comment: Número sequencial que indica a ordem da forma de pagamento no pedido. Permite diferenciar múltiplas formas de pagamento utilizadas em um mesmo pedido.
+
+  - name: payment_type
+    type: string
+    comment: "Tipo de meio de pagamento utilizado. Os valores comuns incluem: credit_card (cartão de crédito), boleto (boleto bancário), voucher (vale-presente), debit_card (cartão de débito)."

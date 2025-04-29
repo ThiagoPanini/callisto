@@ -1,0 +1,26 @@
+[project]
+name = "callisto"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Thiago Panini",email = "panini.development@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+dependencies = [
+    "crewai (>=0.114.0,<0.115.0)",
+    "boto3 (>=1.38.2,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "callisto", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.15.0"
+pylint = "^3.3.6"
+pre-commit = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

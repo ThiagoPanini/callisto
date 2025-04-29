@@ -1,0 +1,27 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_geolocation
+table_description: >
+  Tabela auxiliar que contém coordenadas geográficas (latitude e longitude) associadas ao prefixo do CEP, bem como informações da cidade e estado.
+  Essa tabela serve como base para análises espaciais, mapeamento logístico, definição de clusters regionais e integração com sistemas de geolocalização.
+  Os dados são utilizados principalmente para enriquecer informações de entrega com coordenadas geográficas e auxiliar em análises de distância e roteirização.
+
+table_columns:
+  - name: geolocation_zip_code_prefix
+    type: string
+    comment: Prefixo do código postal (CEP) referente à coordenada geográfica registrada. Representa os cinco primeiros dígitos do CEP. Esse campo é usado para realizar junções com outras tabelas que contenham informações de localização.
+
+  - name: geolocation_lat
+    type: double
+    comment: Latitude da coordenada geográfica associada ao prefixo do CEP. Utilizada em análises espaciais, cálculos de distância e visualização geográfica.
+
+  - name: geolocation_lng
+    type: double
+    comment: Longitude da coordenada geográfica associada ao prefixo do CEP. Complementa a latitude na definição do ponto geográfico exato.
+
+  - name: geolocation_city
+    type: string
+    comment: Nome da cidade correspondente à coordenada geográfica. Pode haver variações ortográficas ou redundâncias em função da origem dos dados.
+
+  - name: geolocation_state
+    type: string
+    comment: Sigla do estado (UF) onde a coordenada está localizada. Segue o padrão brasileiro de duas letras (exemplo SP, RJ, BA).

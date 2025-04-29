@@ -1,0 +1,36 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_order_items
+table_description: >
+  Detalha os itens individuais que compõem cada pedido realizado na plataforma.
+  Cada linha representa um item comprado em um pedido, podendo haver múltiplas linhas para o mesmo pedido (`order_id`) caso contenha mais de um produto.
+  Essa tabela é essencial para análises de mix de produtos, ticket médio por pedido, performance de vendedores, composição de preços e valores de frete.
+  Pode ser integrada com tabelas de pedidos, produtos e vendedores para obter uma visão completa do processo de venda.
+
+table_columns:
+  - name: order_id
+    type: string
+    comment: Identificador único do pedido ao qual o item pertence. Pode se repetir para diferentes itens do mesmo pedido. Usado como chave para junções com outras tabelas relacionadas a pedidos.
+
+  - name: order_item_id
+    type: int
+    comment: Sequência numérica que indica a posição do item dentro do pedido. Começa em 1 e é incremental conforme o número de itens no pedido.
+
+  - name: product_id
+    type: string
+    comment: Identificador do produto vendido. Usado para junções com a tabela de produtos e análises relacionadas ao portfólio comercial.
+
+  - name: seller_id
+    type: string
+    comment: Identificador do vendedor responsável pela venda do item. Pode ser utilizado para análises de performance comercial, SLA de entrega e faturamento por vendedor.
+
+  - name: shipping_limit_date
+    type: timestamp
+    comment: Data e hora limite para o vendedor despachar o item. Fundamental para controle logístico, análise de cumprimento de SLA e auditoria de prazos de envio.
+
+  - name: price
+    type: decimal
+    comment: Valor cobrado pelo produto em reais (BRL), sem considerar o frete. Reflete o valor comercial da unidade do item vendido.
+
+  - name: freight_value
+    type: decimal
+    comment: Valor do frete cobrado pelo envio do item, em reais (BRL). Pode ser utilizado para análises de custo logístico, política de frete e impacto no valor final do pedido.

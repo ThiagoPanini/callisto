@@ -1,0 +1,35 @@
+database_name: db_olist_ecommerce
+table_name: tbl_olist_order_reviews
+table_description: >
+  Contém as avaliações deixadas pelos clientes após a entrega de um pedido.
+  A tabela pode incluir uma nota (score), um título e uma mensagem opcional com o feedback do cliente, além de datas relacionadas à criação da avaliação e à resposta do sistema.
+  É fundamental para medir a satisfação do cliente, avaliar a qualidade de serviço dos vendedores e identificar oportunidades de melhoria na experiência de compra.
+
+table_columns:
+  - name: review_id
+    type: string
+    comment: Identificador único da avaliação realizada pelo cliente. Pode ser utilizado como chave primária da tabela.
+
+  - name: order_id
+    type: string
+    comment: Identificador do pedido avaliado. Permite relacionar a avaliação com o pedido correspondente na tabela de pedidos (`tbl_olist_orders`).
+
+  - name: review_score
+    type: int
+    comment: "Nota atribuída pelo cliente ao pedido, em uma escala de 1 a 5: 1 = muito insatisfeito, 5 = muito satisfeito. Essencial para medir o NPS e a qualidade percebida do serviço."
+
+  - name: review_comment_title
+    type: string
+    comment: Título resumido fornecido pelo cliente para a avaliação. Campo opcional, geralmente contém palavras-chave representativas da opinião expressa.
+
+  - name: review_comment_message
+    type: string
+    comment: Comentário textual fornecido pelo cliente com base em sua experiência com o pedido. Pode ser utilizado em análises de sentimento, detecção de padrões e melhoria de processos.
+
+  - name: review_creation_date
+    type: date
+    comment: Data em que o cliente realizou a avaliação na plataforma. Importante para análises temporais da satisfação do cliente.
+
+  - name: review_answer_timestamp
+    type: timestamp
+    comment: Data e hora em que o sistema registrou a resposta (acknowledgement) da avaliação. Pode indicar o tempo de resposta da plataforma ou do vendedor frente à avaliação do cliente.
